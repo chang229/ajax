@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>document</title>
+</head>
+<body>
+	
+</body>
+<script type="text/javascript">
+	var script = document.createElement("script");
+	script.src = "http://localhost/index/php/jsonp.php?callback=foo";
+	var head = document.getElementsByTagName("head")[0];
+	head.appendChild( script );
+	function foo(data){
+		console.log( data );
+	}
+</script>
+</html>

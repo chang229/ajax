@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="info"></div>
+</body>
+<script type="text/javascript" src="template.js"></script>
+<script type="text/html" id="test">
+	<h1>{{title}}</h1>
+	{{if books}}
+		{{each books as value i}}
+			<div>{{value}}</div>
+		{{/each}}
+	{{/if}}
+</script>
+<script type="text/javascript">
+	var data = {
+		title:"图书信息",
+		books:["beijing","shanghai","guangz","shez"]
+	};
+	var html = template("test",data);
+	var info = document.getElementById("info");
+	info.innerHTML = html;
+</script>
+</html>

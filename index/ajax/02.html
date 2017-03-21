@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原生AJAX</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		#demo{width:500px;padding:20px 0;background:skyblue;margin:50px auto;text-align:center;}
+		#info{padding:0 100px;}
+	</style>
+</head>
+<body>
+<div id="demo">
+	<form>
+        编号：
+        <input type="text" name="username" id="username">
+        <input type="button" value="查询" id="btn">
+    </form>
+    <div id="info"></div>
+</div>
+</body>
+<script type="text/javascript" src="./common.js"></script>
+<script type="text/javascript">
+	(function(window){
+		function $(id){
+			return document.getElementById(id);
+		};
+		// 获取对象
+		var btn = $("btn"),uername = $("username"),info = $("info");
+		// 绑定事件
+		btn.onclick = function(){
+			ajax({
+				type:"get",
+				url:"./02.php",
+				data:{uname:username.value},
+				asynce:true,
+				dataType:"json",
+				success:function(data){
+					if(data.flog == 0 ){
+						info.innerHTML = "书库中没有这本书";
+					}else{
+						var tag = "<ul><li>"+ data.bookname +"</li><li>"+ data.autor +"</li><li>"+ data.desc +"</li></ul>";
+						info.innerHTML = tag;
+					}
+				}
+			})
+		}
+	})(window);
+</script>
+</html>

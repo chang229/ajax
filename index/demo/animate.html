@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		#info{width: 100px;height: 100px;background:skyblue;position:relative;}
+	</style>
+</head>
+<body>
+	<button id="btn">按钮</button>
+	<div id="info"></div>
+</body>
+<script type="text/javascript" src="./ajax.js"></script>
+<script type="text/javascript">
+window.onload = function(){
+	function $(id){
+		return document.getElementById(id);
+	};
+	// 获取对象
+	var btn = $("btn"),info = $("info");
+	btn.onclick = function(){
+		animate(info,{"left":200},function(){
+			animate(info,{"opacity":0.3},function(){
+				animate(info,{"zIndex":99})
+			});
+		});
+	};
+}
+</script>
+</html>

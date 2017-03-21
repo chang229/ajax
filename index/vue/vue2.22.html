@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<p>数字1：{{num1 | tolit}}</p>
+		<p>数字2：{{num2 | tolit}}</p>
+		<p>数字3：{{num3 | tolit}}</p>
+		<p>总和：{{sum}}</p>
+		<p><button v-on:click="plus">点击</button>{{a}}</p>
+	</div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			num1:12.22,
+			num2:10.11,
+			num3:2.22,
+			a:1
+		},
+		// 过滤器
+		filters:{
+			tolit:function(value){return parseInt(value);}
+		},
+		// 计算
+		computed:{
+			sum:function(){
+				return this.num1 + this.num2 + this.num3;
+			}
+		},
+		// 事件
+		methods:{
+			plus:function(){
+				return this.a++;
+			}
+		},
+		// 监听
+		watch:{
+			a:function(){
+				console.log("有变化，有新数值" + "---" + this.a);
+			}
+		}
+	})
+</script>
+</html>

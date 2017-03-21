@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="app">
+		<span>数字1：{{num1 | tolin}}</span><br/>
+		<span>数字2：{{num2 | tolin}}</span><br/>
+		<span>数字3：{{num3 | tolin}}</span><br/>
+		<span>总和：{{sum}}</span><br/>
+		<button v-on:click="plus">点击</button><span>{{a}}</span>
+	</div>
+</body>
+<script type="text/javascript" src="vue.js"></script>
+<script type="text/javascript">
+	var app = new Vue({
+		el:"#app",
+		data:{
+			num1:12.34,
+			num2:36.58,
+			num3:78.21,
+			a:1
+		},
+		// 过滤器
+		filters:{
+			tolin:function(value){
+				return parseInt(value);
+			}
+		},
+		// 计算属性
+		computed:{
+			sum:function(){
+				return this.num1 + this.num2 + this.num3;
+			}
+		},
+		// 定义一些方法，供组件使用
+		methods:{
+			plus:function(){
+				return this.a++;
+			}
+		},
+		// 检测指定数据发生改变的API
+		watch:{
+			a:function(){
+				console.log("有变化，最新值");
+				console.log(this.a);
+			}
+		}
+	})
+</script>
+</html>
